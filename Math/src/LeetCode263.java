@@ -10,27 +10,41 @@ import java.util.PriorityQueue;
  * 最后返回==1
  */
 public class LeetCode263 {
+    //    public static boolean isUgly(int num) {
+//        if (num <= 0) {
+//            return false;
+//        }
+//        if (num == 1) {
+//            return true;
+//        }
+//        while (num % 2 == 0) {
+//            num /= 2;
+//        }
+//        while (num % 3 == 0) {
+//            num /= 3;
+//        }
+//        while (num % 5 == 0) {
+//            num /= 5;
+//        }
+//        return num == 1;
+//
+//
+//    }
+    static int maxDivide(int a, int b) {
+        while (a % b == 0) {
+            a /= b;
+        }
+        return a;
+    }
     public static boolean isUgly(int num) {
         if (num <= 0) {
             return false;
         }
-        if (num == 1) {
-            return true;
-        }
-        while (num % 2 == 0) {
-            num /= 2;
-        }
-        while (num % 3 == 0) {
-            num /= 3;
-        }
-        while (num % 5 == 0) {
-            num /= 5;
-        }
-        return num == 1;
-
-
+        num = maxDivide(num, 2);
+        num = maxDivide(num, 3);
+        num = maxDivide(num, 5);
+        return num == 1 ? true : false;
     }
-
     public static void main(String[] args) {
         int num = 4;
         System.out.println(isUgly(num));
